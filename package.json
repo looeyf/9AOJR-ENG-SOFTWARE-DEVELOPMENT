@@ -2,7 +2,9 @@
   "name": "9aojr-eng-software-development",
   "version": "1.0.0",
   "scripts": {
-    "start": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix"
   },
