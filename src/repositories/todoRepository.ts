@@ -1,4 +1,4 @@
-import { Todo } from '../@types/Todo';
+import { CreateTodoPayload, NullableTodo, Todo } from '../@types/Todo';
 
 const todos: Todo[] = [];
 let currentId = 1;
@@ -7,16 +7,14 @@ export function findAll(): Todo[] {
   return todos;
 }
 
-export function create(
-  todo: Omit<Todo, 'id' | 'createdAt' | 'completedAt'>,
-): Todo {
+export function create(todo: CreateTodoPayload): Todo {
   const createdAt = new Date().toISOString();
 
   const newTodo: Todo = {
     id: currentId++,
     title: todo.title,
     description: todo.description,
-    isCompleted: todo.isCompleted,
+    isCompleted: false,
     createdAt,
     completedAt: null,
   };
@@ -25,7 +23,7 @@ export function create(
   return newTodo;
 }
 
-export function update(id: number, isCompleted: boolean): Todo | null {
+export function update(id: number, isCompleted: boolean): NullableTodo {
   const todo = todos.find((todo) => todo.id === id);
   if (!todo) return null;
 
@@ -35,7 +33,7 @@ export function update(id: number, isCompleted: boolean): Todo | null {
   return todo;
 }
 
-export function remove(id: number): Todo | null {
+export function remove(id: number): NullableTodo {
   const index = todos.findIndex((todo) => todo.id === id);
   if (index === -1) return null;
 

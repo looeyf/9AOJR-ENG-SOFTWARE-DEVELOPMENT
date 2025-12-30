@@ -1,3 +1,5 @@
+import { Nullable } from './Common';
+
 export interface Todo {
   id: number;
   title: string;
@@ -6,3 +8,9 @@ export interface Todo {
   createdAt: string;
   completedAt: string | null;
 }
+
+export type CreateTodoPayload = Pick<Todo, 'title' | 'description'>;
+
+export type UpdateTodoPayload = Pick<Todo, 'isCompleted'>;
+
+export type NullableTodo = Nullable<Todo>;

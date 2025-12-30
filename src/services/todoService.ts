@@ -1,26 +1,21 @@
 import * as repository from '../repositories/todoRepository';
-import { Todo } from '../@types/Todo';
+import { CreateTodoPayload, NullableTodo, Todo } from '../@types/Todo';
 
 export function getAll(): Todo[] {
   return repository.findAll();
 }
 
-// @TODO: create shared type for Omit<Todo, 'id' | 'isCompleted' | 'createdAt' | 'completedAt'>
-export function create({
-  title,
-  description,
-}: Omit<Todo, 'id' | 'isCompleted' | 'createdAt' | 'completedAt'>): Todo {
+export function create({ title, description }: CreateTodoPayload): Todo {
   return repository.create({
     title,
     description,
-    isCompleted: false,
   });
 }
 
-export function update(id: number, completed: boolean): Todo | null {
-  return repository.update(id, completed);
+export function update(id: number, isCompleted: boolean): NullableTodo {
+  return repository.update(id, isCompleted);
 }
 
-export function remove(id: number): Todo | null {
+export function remove(id: number): NullableTodo {
   return repository.remove(id);
 }
