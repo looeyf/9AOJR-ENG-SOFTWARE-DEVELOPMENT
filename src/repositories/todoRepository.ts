@@ -30,6 +30,8 @@ export function update(id: number, isCompleted: boolean): Todo | null {
   if (!todo) return null;
 
   todo.isCompleted = isCompleted;
+  todo.completedAt = isCompleted ? new Date().toISOString() : null;
+
   return todo;
 }
 

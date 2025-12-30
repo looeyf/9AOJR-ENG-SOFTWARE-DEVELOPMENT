@@ -26,6 +26,7 @@ export function create(
 
 // @TODO: check if it's needed to create shared types for id and isCompleted since it's
 // being used across the application
+// @TODO: make possible to edit another fields other than isCompleted
 export function update(
   req: Request<{ id: number }, unknown, { isCompleted: boolean }>,
   res: Response<Todo | Error | null>,
