@@ -1,3 +1,4 @@
+//define as rotas HTTP para as operações de todo.
 import { Router } from 'express';
 import * as controller from '../controllers/todoController';
 

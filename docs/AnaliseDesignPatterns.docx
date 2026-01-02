@@ -1,0 +1,118 @@
+1. Mapeamento de Design Patterns no Microsserviço ToDo
+
+1.1 Introdução
+
+O presente trabalho tem como objetivo analisar e mapear os Design Patterns, bem como os princípios GRASP e SOLID, aplicados no desenvolvimento de um microsserviço do tipo ToDo List, implementado em JavaScript/TypeScript utilizando o framework Express.js.
+
+A análise baseia-se na estrutura real do código-fonte, identificando padrões arquiteturais, responsabilidades das camadas e boas práticas de engenharia de software adotadas no projeto.
+
+1.2 Visão Geral da Arquitetura
+
+O microsserviço adota uma arquitetura em camadas (Layered Architecture), separando responsabilidades em módulos distintos, conforme apresentado a seguir:
+
+Routes: definição das rotas HTTP
+
+Controllers: coordenação das requisições
+
+Services: regras de negócio
+
+Repositories: acesso e persistência de dados
+
+Tests: testes unitários
+
+Essa organização favorece a manutenibilidade, escalabilidade e testabilidade do sistema, alinhando-se às boas práticas recomendadas para microsserviços REST.
+
+1.3 Aplicação dos Princípios GRASP
+1.3.1 Controller
+
+O padrão GRASP Controller é aplicado por meio da separação clara entre rotas e controladores. As classes de controle recebem as requisições HTTP e delegam o processamento para a camada de serviço, evitando a concentração de lógica de negócio nessa camada.
+
+1.3.2 Information Expert
+
+O princípio Information Expert é observado na atribuição de responsabilidades às classes que detêm o maior conhecimento sobre determinada informação.
+A camada de Service concentra as regras de negócio, enquanto a camada de Repository é responsável exclusivamente pelo acesso aos dados.
+
+1.3.3 Low Coupling e High Cohesion
+
+O sistema apresenta baixo acoplamento, uma vez que cada camada conhece apenas a camada imediatamente inferior. Além disso, observa-se alta coesão, pois cada módulo possui uma responsabilidade bem definida, reduzindo a complexidade e facilitando futuras alterações.
+
+1.4 Aplicação dos Princípios SOLID
+1.4.1 Single Responsibility Principle (SRP)
+
+Cada classe do sistema possui uma única responsabilidade, como controle de requisições, regras de negócio ou persistência de dados, garantindo que mudanças em uma regra não afetem outras partes do sistema.
+
+1.4.2 Open/Closed Principle (OCP)
+
+A arquitetura permite extensão de funcionalidades sem a necessidade de modificar o código existente, especialmente nas camadas de serviço e repositório, embora o uso de interfaces possa ser ampliado para reforçar esse princípio.
+
+1.4.3 Liskov Substitution Principle (LSP)
+
+O sistema não apresenta violações ao princípio de substituição de Liskov, uma vez que não há hierarquias de herança que comprometam o comportamento esperado das classes.
+
+1.4.4 Interface Segregation Principle (ISP)
+
+O uso de tipagens e interfaces específicas garante que os módulos dependam apenas dos contratos que realmente utilizam, evitando dependências desnecessárias.
+
+1.4.5 Dependency Inversion Principle (DIP)
+
+Observa-se uma inversão de dependência em nível conceitual, onde camadas superiores dependem de abstrações lógicas (serviços e repositórios), e não de detalhes de implementação. Contudo, a adoção explícita de injeção de dependência poderia fortalecer ainda mais esse princípio.
+
+1.5 Design Patterns Identificados
+
+Repository Pattern: isola o acesso aos dados e facilita testes e substituição de mecanismos de persistência.
+
+Service Layer Pattern: centraliza a lógica de negócio, evitando código duplicado e controllers sobrecarregados.
+
+MVC Adaptado para APIs REST: separa controle, modelo (tipos/interfaces) e lógica de negócio.
+
+Dependency Injection (manual): dependências são encadeadas entre camadas, permitindo evolução para um container de IoC.
+
+1.6 Considerações Finais
+
+A análise demonstra que o microsserviço apresenta uma arquitetura bem estruturada, alinhada aos princípios GRASP e SOLID, utilizando padrões de projeto amplamente aceitos na engenharia de software moderna. Pequenas melhorias, como a introdução de interfaces e injeção de dependência formal, podem elevar ainda mais a qualidade do projeto.
+
+1.7 High Cohesion (Alta Coesão):
+Cada pasta tem uma única responsabilidade clara:
+
+Camada	            Responsabilidade
+controller	        Orquestrar requisições
+service	            Regras de negócio
+repository	        Acesso a dados
+routes	            Mapeamento HTTP
+tests	            Testes unitários
+
+Exemplo de fluxo:
+Route → Controller → Service → Repository
+
+1.8 SRP — Single Responsibility Principle:
+| Arquivo           | Responsabilidade  |
+| ----------------- | ----------------- |
+| todoController.ts | Controle HTTP     |
+| todoService.ts    | Lógica de negócio |
+| todoRepository.ts | Persistência      |
+| todoRoutes.ts     | Rotas             |
+
+1.9 MVC (Model–View–Controller adaptado)
+| Papel      | Implementação             |
+| ---------- | ------------------------- |
+| Controller | `todoController.ts`       |
+| Model      | Tipos em `@types/Todo.ts` |
+| Service    | Camada de negócio         |
+| Repository | Persistência              |
+
+2.0
+Resumo Final (Mapa rápido) 
+| Categoria                | Aplicação |
+| ------------------------ | --------- |
+| GRASP Controller         | ✅         |
+| GRASP Information Expert | ✅         |
+| GRASP Low Coupling       | ✅         |
+| GRASP High Cohesion      | ✅         |
+| SOLID - SRP              | ✅         |
+| SOLID - OCP              | ✅        |
+| SOLID - LSP              | ✅         |
+| SOLID - ISP              | ✅         |
+| SOLID - DIP              | ✅        |
+| Repository Pattern       | ✅         |
+| Service Layer            | ✅         |
+| MVC (API)                | ✅         |

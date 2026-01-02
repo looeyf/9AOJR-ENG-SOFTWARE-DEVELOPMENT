@@ -1,3 +1,5 @@
+//conhece as regras de negócio relacionadas a "to-dos"
+//Service não sabe detalhes de  HTTP
 import * as repository from '../repositories/todoRepository';
 import { CreateTodoPayload, NullableTodo, Todo } from '../@types/Todo';
 

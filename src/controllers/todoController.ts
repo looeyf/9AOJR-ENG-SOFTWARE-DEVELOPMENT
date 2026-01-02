@@ -1,3 +1,5 @@
+//recebe a requisição e delega a lógica
+// Controller não acessa o repositório diretamente, ele chama o service
 import * as service from '../services/todoService';
 import { Request, Response } from '../@types/Http';
 import { CreateTodoPayload, Todo, UpdateTodoPayload } from '../@types/Todo';

@@ -1,3 +1,5 @@
+//conhece como os dados são armazenados
+//Repository não conhece regras de negócio
 import { CreateTodoPayload, NullableTodo, Todo } from '../@types/Todo';
 
 const todos: Todo[] = [];
