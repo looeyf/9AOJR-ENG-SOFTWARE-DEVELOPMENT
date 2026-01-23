@@ -2,7 +2,7 @@
 //Repository não conhece regras de negócio
 import { CreateTodoPayload, NullableTodo, Todo } from '../@types/Todo';
 
-const todos: Todo[] = [];
+let todos: Todo[] = [];
 let currentId = 1;
 
 export function findAll(): Todo[] {
@@ -41,4 +41,9 @@ export function remove(id: number): NullableTodo {
 
   const removedTodo = todos.splice(index, 1);
   return removedTodo[0];
+}
+
+export function clearTodos(): void {
+  todos = [];
+  currentId = 1;
 }
