@@ -26,29 +26,35 @@ A estrutura de pastas do projeto segue o padrão de responsabilidades:
 
 ### Pré-requisitos
 
-- Node.js (versão 18 ou superior)
-- npm ou yarn
+- Node.js (versão 24 ou superior)
+- nvm (Opcional)
+- npm
 
 ### Instalação
 
 1. Clone o repositório.
-2. No diretório raiz, instale as dependências:
+2. Se estiver utilizando nvm, se não pule este passo:
+  ```bash
+  ~ nvm install
+  ~ nvm use
+  ```
+3. No diretório raiz, instale as dependências:
    ```bash
-   npm install
+   ~ npm install
    ```
 
 ### Execução
 
 - **Modo de Desenvolvimento (com auto-reload):**
   ```bash
-  npm run dev
+  ~ npm run dev
   ```
   O servidor estará rodando em `http://localhost:3000`.
 
 - **Build de Produção:**
   ```bash
-  npm run build
-  npm start
+  ~ npm run build
+  ~ npm start
   ```
 
 ## Como Testar
@@ -57,17 +63,17 @@ O projeto possui testes unitários e de integração implementados com Jest.
 
 - **Executar todos os testes:**
   ```bash
-  npm test
+  ~ npm test
   ```
 
 - **Executar testes em modo watch:**
   ```bash
-  npm run test:watch
+  ~ npm run test:watch
   ```
 
 - **Verificar cobertura de testes:**
   ```bash
-  npm run test:coverage
+  ~ npm run test:coverage
   ```
 
 ## Endpoints da API
